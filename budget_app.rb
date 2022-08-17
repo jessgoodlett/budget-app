@@ -7,5 +7,5 @@ configure(:development) do
 end
 
 get "/" do
-  "hello world"
+  erb :user_dashboard, layout: :layout
 end

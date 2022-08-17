@@ -5,9 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/application.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
   <title>Budget App</title>
 </head>
 <body>
+  <header>
+    <nav>
+      <div class="logo">
+        <h1>SmartMoney.</h1>
+      </div>
+      <div class="main-nav">
+        <a href="#">Dashboard</a>
+        <a href="#">My Goal</a>
+        <a href="#">Spending</a>
+        <a href="#">Finances +</a>
+        <div class="menu-dropdown">
+          <a href="#">Expenses</a>
+          <a href="#">Savings</a>
+          <a href="#">Debt</a>
+        </div>
+        <a href="#">Analysis</a>
+      </div>
+
+      <div class="sub-nav">
+        <a href="#">Settings</a>
+        <a href="#">Help & Support</a>
+        <a href="#">Log Out</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
   
   <script src="/javascripts/application.js"></script>
 </body>
