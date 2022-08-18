@@ -1,0 +1,38 @@
+<section class="page-title">
+  <h1>Your Income</h1>
+</section>
+
+<section class="total-income">
+  <div class="income-display">
+    <h3>Monthly</h3>
+    <span>$<%= @total_income[:month] %></span>
+  </div>
+  <div class="income-display">
+    <h3>Yearly</h3>
+    <span>$<%= @total_income[:year] %></span>
+  </div>
+  <div class="income-display"></div>
+</section>
+
+<div class="list-title">
+  <h2>This Month</h2>
+  <span>+ ADD</span>
+</div>
+
+<section class="income-overview">
+  <div class="list-container">
+    <% @income.each do |i| %>
+        <div class="list-entry">
+          <div class="list-left">
+            <h3><%= i[:name] %></h3>
+            <p><%= i[:description] %></p>
+          </div>
+          <div class="list-right">
+            <p>$<%= i[:monthly] %> <span class="edit">EDIT</span></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="detail_overview"></div>
+</section>

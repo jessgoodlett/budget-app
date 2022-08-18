@@ -86,3 +86,95 @@ main {
   width: 85vw;
   background-color: #F3F3F3;
 }
+
+/* income page styling */
+.total-income {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5rem 7.5rem;
+}
+
+.income-display {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  padding: 2.5rem;
+  border-radius: 2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.income-display h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  color: #AAD77A;
+}
+
+.income-display span {
+  font-size: 5rem;
+}
+
+.income-overview {
+  display: flex;
+  flex-direction: row;
+  padding: 0 7.5rem;
+  width: 100%;
+}
+
+.list-title {
+  padding: 0 7.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.list-container {
+  width: 70%;
+  margin-right: 5rem;
+}
+
+.list-entry {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  min-height: 10rem;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.list-left {
+  width: 60%;
+}
+
+.list-left h3 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: .15rem;
+  color: #333;
+}
+
+.list-right {
+  width: 40%;
+  text-align: right;
+  font-size: 1.6rem;
+}
+
+.edit {
+  color: #AAD77A;
+  margin-left: 2.5rem;
+}
+
+.detail_overview {
+  width: 30%;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
