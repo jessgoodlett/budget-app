@@ -24,8 +24,8 @@
     <% @income.each do |i| %>
         <div class="list-entry">
           <div class="list-left">
-            <h3><%= i[:name] %></h3>
-            <p><%= i[:description] %></p>
+            <h3><%= i[:title] %></h3>
+            <p><%= i[:memo] %></p>
           </div>
           <div class="list-right">
             <p>$<%= i[:monthly] %> <span class="edit">EDIT</span></p>

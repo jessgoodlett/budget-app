@@ -10,17 +10,19 @@ class DatabasePersistance
     result = query(sql, user_id)
 
     result.map do |tuple|
-      { name: tuple["name"],
-        description: tuple["description"],
-        monthly: add_commas(tuple["monthly_amount"]),
-        yearly: add_commas((tuple["monthly_amount"].to_i * 12).to_s) }
+      monthly_duration = tuple["duration"].to_i
+
+      { title: tuple["title"],
+        memo: tuple["memo"],
+        monthly: add_commas(tuple["monthly_income"]),
+        yearly: add_commas((tuple["monthly_income"].to_i * monthly_duration).to_s) }
     end
   end
 
   def calculate_income(user_id)
     sql = <<~SQL
-      SELECT SUM(monthly_amount) AS total_month,
-        SUM(monthly_amount * 12) AS total_year
+      SELECT SUM(monthly_income) AS total_month,
+        SUM(monthly_income * 12) AS total_year
       FROM income 
       WHERE user_id = $1
       GROUP BY user_id
@@ -34,8 +36,29 @@ class DatabasePersistance
   end
 
   def add_new_income(title, memo, monthly_income, duration, user_id)
-    sql = "INSERT INTO income VALUES ($1, $2, $3, $4, $5)"
+    sql = "INSERT INTO income VALUES (DEFAULT, $1, $2, $3, $4, $5)"
     query(sql, title, memo, monthly_income, duration, user_id)
+  end
+
+  def edit_income(title, memo, monthly_income, duration, id)
+    sql = <<~SQL
+      UPDATE income
+      SET title = $1,
+          memo = $2,
+          monthly_income = $3,
+          duration_months = $4
+      WHERE id = $5
+    SQL
+    query(sql, title, memo, monthly_income, duration, id)
+  end
+
+  def find_income(id)
+    tuple = query("SELECT * FROM income WHERE id = $1", id).first
+    { title: tuple["title"],
+      memo: tuple["memo"],
+      monthly_income: tuple["monthly_income"],
+      duration: tuple["duration_months"],
+      user_id: tuple["app_user_id"] }
   end
 
   private

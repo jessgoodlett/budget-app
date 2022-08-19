@@ -20,9 +20,10 @@ CREATE TABLE app_user (
 );
 
 CREATE TABLE income (
-  name TEXT NOT NULL,
+  id SERIAL PRIMARY KEY, 
+  title TEXT NOT NULL,
   memo TEXT,
-  monthly_amount REAL NOT NULL,
+  monthly_income REAL NOT NULL,
   duration_months INTEGER NOT NULL,
   user_id INTEGER REFERENCES app_user(id)
 );
@@ -33,6 +34,7 @@ CREATE TABLE expense_category (
 );
 
 CREATE TABLE expense (
+  id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   amount_spent REAL NOT NULL,
   required BOOLEAN DEFAULT true,
@@ -41,6 +43,7 @@ CREATE TABLE expense (
 );
 
 CREATE TABLE spending (
+  id SERIAL PRIMARY KEY,
   item TEXT NOT NULL,
   cost REAL NOT NULL,
   expense_category_id INTEGER REFERENCES expense_category(id)
@@ -52,7 +55,8 @@ CREATE TABLE saving_category (
 );
 
 CREATE TABLE saving_account (
-  name SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
   amount_saved REAL NOT NULL,
   user_id INTEGER REFERENCES app_user(id),
   category_id INTEGER REFERENCES saving_category(id)
@@ -64,6 +68,7 @@ CREATE TABLE debt_category (
 );
 
 CREATE TABLE debt (
+  id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   amount REAL NOT NULL,
   interest_rate NUMERIC(6, 4),
@@ -75,5 +80,5 @@ CREATE TABLE debt (
 INSERT INTO app_user (first_name, last_name, username, password, email) 
   VALUES ('Jane', 'Doe', 'toobroke', 'secret', 'janedoe@broke.com');
 
-INSERT INTO income VALUES ('software engineer', 'full-time position', 5000, 12, 1);
-INSERT INTO income VALUES ('freelance developer', 'contract work. estimated yearly.', 2000, 12, 1);
+INSERT INTO income VALUES (DEFAULT, 'software engineer', 'full-time position', 5000, 12, 1);
+INSERT INTO income VALUES (DEFAULT, 'freelance developer', 'contract work. estimated yearly.', 2000, 12, 1);
