@@ -20,14 +20,17 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  width: 15vw;
+  width: 15%;
 }
 
 nav {
   height: 100vh;
   /* background-color: #5b9b5b; */
   background-color: #fff;
-  padding: 2.5rem;
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 nav>div {
@@ -37,21 +40,23 @@ nav>div {
 
 .logo h1 {
   color: #333;
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   margin-bottom: 10rem;
   font-weight: 200;
   letter-spacing: .25rem;
 }
 
-.main-nav {}
+.main-nav {
+  width: 100%;
+}
 
 .main-nav a {
   color: #333;
-  font-size: 1.8rem;
-  font-weight: 300;
-  letter-spacing: .25rem;
+  font-size: 1.6rem;
+  font-weight: 100;
+  letter-spacing: .1rem;
   padding: 1.5rem 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .sub-nav {
@@ -61,7 +66,7 @@ nav>div {
 
 .sub-nav a {
   color: #333;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   letter-spacing: .1rem;
   margin-bottom: .75rem;
   font-weight: 300;
@@ -83,15 +88,31 @@ main {
   position: absolute;
   right: 0;
   min-height: 100vh;
-  width: 85vw;
+  width: 85%;
   background-color: #F3F3F3;
 }
 
-/* income page styling */
+.page-title {
+  width: 100%;
+  padding: 5rem 7.5rem;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: .75fr 1fr;
+  gap: 2.5rem 5rem;
+  grid-template-areas:
+    "stats stats stats"
+    "lists side"
+  ;
+}
+
+.lists {
+  grid-column: span 2;
+}
+
 .total-income {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   width: 100%;
   padding: 5rem 7.5rem;
 }
@@ -101,9 +122,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20vw;
-  padding: 2.5rem;
-  border-radius: 2rem;
+  padding: 5rem 2.5rem;
+  border-radius: 1rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -119,30 +139,16 @@ main {
   font-size: 5rem;
 }
 
-.income-overview {
-  display: flex;
-  flex-direction: row;
-  padding: 0 7.5rem;
-  width: 100%;
-}
-
 .list-title {
-  padding: 0 7.5rem 2.5rem;
   display: flex;
   justify-content: space-between;
-  width: 70%;
-}
-
-.list-container {
-  width: 70%;
-  margin-right: 5rem;
 }
 
 .list-entry {
   display: flex;
   align-items: center;
   background-color: #fff;
-  border-radius: 2rem;
+  border-radius: 1rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   min-height: 10rem;
   padding: 2.5rem;
@@ -175,6 +181,6 @@ main {
 .detail_overview {
   width: 30%;
   background-color: #fff;
-  border-radius: 2rem;
+  border-radius: 1rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

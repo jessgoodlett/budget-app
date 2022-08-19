@@ -1,38 +1,47 @@
 <section class="page-title">
   <h1>Your Income</h1>
+  <p>let's put a short description here</p>
 </section>
 
 <section class="total-income">
-  <div class="income-display">
-    <h3>Monthly</h3>
-    <span>$<%= @total_income[:month] %></span>
-  </div>
-  <div class="income-display">
-    <h3>Yearly</h3>
-    <span>$<%= @total_income[:year] %></span>
-  </div>
-  <div class="income-display"></div>
-</section>
+  <div class="main-container">
+    <div class="stats">
+      <div class="income-display">
+        <h3>Monthly</h3>
+        <span>$<%= @total_income[:month] %></span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="income-display">
+        <h3>Yearly</h3>
+        <span>$<%= @total_income[:year] %></span>
+      </div>
+    </div>
+    <div clas="stats">
+      <div class="income-display"></div>
+    </div>
 
-<div class="list-title">
-  <h2>This Month</h2>
-  <span>+ ADD</span>
-</div>
-
-<section class="income-overview">
-  <div class="list-container">
-    <% @income.each do |i| %>
-        <div class="list-entry">
-          <div class="list-left">
-            <h3><%= i[:title] %></h3>
-            <p><%= i[:memo] %></p>
+    <div class="lists">
+      <div class="list-title">
+        <h2>This Month</h2>
+        <span>+ ADD</span>
+      </div>
+      <div class="list-container">
+        <% @income.each do |i| %>
+          <div class="list-entry">
+            <div class="list-left">
+              <h3><%= i[:title] %></h3>
+              <p><%= i[:memo] %></p>
+            </div>
+            <div class="list-right">
+              <p>$<%= i[:monthly] %> <span class="edit">EDIT</span></p>
+            </div>
           </div>
-          <div class="list-right">
-            <p>$<%= i[:monthly] %> <span class="edit">EDIT</span></p>
-          </div>
-        </div>
-    <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="side">
+      <div class="detail_overview"></div>
+    </div>
   </div>
-
-  <div class="detail_overview"></div>
 </section>
