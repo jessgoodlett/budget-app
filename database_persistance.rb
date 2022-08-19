@@ -61,6 +61,10 @@ class DatabasePersistance
       user_id: tuple["app_user_id"] }
   end
 
+  def delete_income(id)
+    query("DELETE FROM income WHERE id = $1", id)
+  end
+
   private
 
   def query(statement, *params)
