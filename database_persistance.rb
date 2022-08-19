@@ -33,6 +33,11 @@ class DatabasePersistance
     { month: total_month, year: total_year}
   end
 
+  def add_new_income(title, memo, monthly_income, duration, user_id)
+    sql = "INSERT INTO income VALUES ($1, $2, $3, $4, $5)"
+    query(sql, title, memo, monthly_income, duration, user_id)
+  end
+
   private
 
   def query(statement, *params)

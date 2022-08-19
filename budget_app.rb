@@ -22,3 +22,17 @@ get "/income" do
   @total_income = @storage.calculate_income(@user)
   erb :income, layout: :layout
 end
+
+get "/income/new" do
+  erb :new_income, layout: :layout
+end
+
+post "/income" do
+  title = params[:title].strip
+  memo = !params[:memo] ? '' : params[:memo].strip
+  monthly_income = params[:income]
+  duration = params[:duration]
+
+  @storage.add_new_income(title, memo, monthly_income, duration, @user)
+  redirect "/income"
+end

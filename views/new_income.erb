@@ -1,0 +1,28 @@
+<section class="page-title">
+  <h1>Add Income</h1>
+</section>
+
+<section class="form-section">
+  <form action="/income" method="post">
+  <div>
+    <label for="title">Source of Income</label>
+    <input name="title" type="text" placeholder="" maxlength="100" required>
+  </div>
+  <div>
+    <label for="memo">description (optional)</label>
+    <input name="memo" type="text" placeholder="">
+  </div>
+  <div>
+    <label for="title">How much do you expect to make in one month?</label>
+    <input name="income" type="number" min="0" required>
+  </div>
+  <div>
+    <label for="title">Source of Income Duration</label>
+    <input name="duration" type="range" value="12" min="1" max="12" oninput="this.nextElementSibling.value = this.value">
+    <output>12</output> months
+  </div>
+  <div>
+    <input type="submit" value="submit">
+  </div>
+  </form>
+</section>
