@@ -24,7 +24,7 @@
     <div class="lists">
       <div class="list-title">
         <h2>This Month</h2>
-        <span>+ ADD</span>
+        <span><a href="/income/new"><i class="fa-solid fa-plus"></i> ADD</a></span>
       </div>
       <div class="list-container">
         <% @income.each do |i| %>
@@ -34,7 +34,7 @@
               <p><%= i[:memo] %></p>
             </div>
             <div class="list-right">
-              <p>$<%= i[:monthly] %> <span class="edit">EDIT</span></p>
+              <p>$<%= i[:monthly] %> <span class="edit"><a href="/income/<%= i[:income_id] %>/edit">EDIT</a></span></p>
             </div>
           </div>
         <% end %>

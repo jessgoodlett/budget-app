@@ -15,6 +15,23 @@ body {
   position: relative;
 }
 
+a {
+  color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #000;
+}
+
 /* Navigation */
 header {
   position: absolute;
@@ -30,7 +47,6 @@ nav {
   padding: 2.5rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 nav>div {
@@ -41,9 +57,9 @@ nav>div {
 .logo h1 {
   color: #333;
   font-size: 2.4rem;
-  margin-bottom: 10rem;
   font-weight: 200;
   letter-spacing: .25rem;
+  margin: 0 auto 5rem;
 }
 
 .main-nav {
@@ -52,24 +68,23 @@ nav>div {
 
 .main-nav a {
   color: #333;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 100;
   letter-spacing: .1rem;
   padding: 1.5rem 0;
   text-transform: capitalize;
+  padding-left: 2.5rem;
+  transition: all .25s ease;
 }
 
-.sub-nav {
-  position: absolute;
-  bottom: 25;
+.main-nav a:hover {
+  border-left: 5px solid #5b9b5b;
+  background: #f3f3f35b;
 }
 
-.sub-nav a {
-  color: #333;
-  font-size: 1.4rem;
-  letter-spacing: .1rem;
-  margin-bottom: .75rem;
-  font-weight: 300;
+i {
+  color: #AAD77A;
+  margin-right: 5px;
 }
 
 .menu-dropdown {
@@ -94,7 +109,7 @@ main {
 
 .page-title {
   width: 100%;
-  padding: 5rem 7.5rem;
+  padding: 5rem 7.5rem 0;
 }
 
 .main-container {

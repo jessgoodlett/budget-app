@@ -15,7 +15,8 @@ class DatabasePersistance
       { title: tuple["title"],
         memo: tuple["memo"],
         monthly: add_commas(tuple["monthly_income"]),
-        yearly: add_commas((tuple["monthly_income"].to_i * monthly_duration).to_s) }
+        yearly: add_commas((tuple["monthly_income"].to_i * monthly_duration).to_s),
+        income_id: tuple["id"] }
     end
   end
 
