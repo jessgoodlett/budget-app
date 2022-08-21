@@ -70,3 +70,43 @@ post "/income/:id/destroy" do
   @storage.delete_income(params[:id].to_i)
   redirect "/income"
 end
+
+# debt pages
+get "/debt" do
+  @debt = @storage.list_user_debt(@user)
+  @total_debt = @storage.calculate_debt(@user)
+  erb :debt
+end
+
+get "/debt/new" do
+  erb :new_debt
+end
+
+post "/debt" do
+  title = params[:title].strip
+  amount = params[:amount]
+  category = params[:category]
+
+  @storage.add_new_debt(title, amount, category, @user)
+  redirect "/debt"
+end
+
+get "/debt/:id/edit" do
+  @current_debt = @storage.find_debt(params[:id].to_i)
+  erb :edit_debt
+end
+
+post "/debt/:id" do
+  title = params[:title].strip
+  amount = params[:amount]
+  category = params[:category]
+  id = params[:id].to_i
+
+  @storage.edit_debt(title, amount, category, id)
+  redirect "/debt"
+end
+
+post "/debt/:id/destroy" do
+  @storage.delete_debt(params[:id].to_i)
+  redirect "/debt"
+end

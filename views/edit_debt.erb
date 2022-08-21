@@ -1,0 +1,29 @@
+<section class="page-title edit-income">
+  <h1>Edit Debt</h1>
+  <form action="/debt/<%= params[:id] %>/destroy" method="post">
+    <button class="delete-btn" type="submit">Delete<i class="fa-solid fa-trash"></i></input>
+  </form>
+</section>
+
+<section class="form-section">
+  <form action="/debt/<%= params[:id] %>" method="post">
+    <input name="title" type="text" value="<%= @current_debt[:title] %>" maxlength="100" required>
+    <input name="amount" type="number" min="0" required value="<%= @current_debt[:amount]%>">
+    <div class="form-select">
+      <label for="category">Select a debt category:</label>
+      <select name="category" id="debt-category" autofocus="<%= @current_debt[:category_id] %>" required>
+        <option value="1">Credit Card</option>
+        <option value="2">Personal Loan</option>
+        <option value="3">Student Loan</option>
+        <option value="4">Mortgage</option>
+        <option value="5">Auto Loan</option>
+        <option value="6">Overdraft</option>
+        <option value="7">Other</option>
+      </select>
+    </div>
+  <div class="form-btns">
+    <a href="/debt" class="cancel-btn">cancel</a>
+    <input type="submit" value="submit">
+  </div>
+  </form>
+</section>

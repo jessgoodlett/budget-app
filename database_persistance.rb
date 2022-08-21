@@ -66,6 +66,61 @@ class DatabasePersistance
     query("DELETE FROM income WHERE id = $1", id)
   end
 
+  def list_user_debt(user_id)
+    sql = <<~SQL
+      SELECT name, amount, category_type, debt.id AS debt_id FROM debt 
+      INNER JOIN debt_category ON category_id = debt_category.id
+      WHERE user_id = $1
+    SQL
+    result = query(sql, user_id)
+
+    result.map do |tuple|
+      { name: tuple["name"],
+        amount: add_commas(tuple["amount"]),
+        category: tuple["category_type"],
+        debt_id: tuple["debt_id"]}
+    end
+  end
+
+  def calculate_debt(user_id)
+    sql = <<~SQL
+      SELECT SUM(amount) AS amount FROM debt 
+      WHERE user_id = $1
+      GROUP BY user_id
+    SQL
+    tuple = query(sql, user_id).first
+
+    { amount: add_commas(tuple["amount"])}
+  end
+
+  def add_new_debt(title, amount, category, user_id)
+    sql = "INSERT INTO debt (name, amount, category_id, user_id) VALUES ($1, $2, $3, $4)"
+    query(sql, title, amount, category, user_id)
+  end
+
+  def find_debt(id)
+    tuple = query("SELECT * FROM debt WHERE id = $1", id).first
+    { title: tuple["name"],
+      amount: tuple["amount"],
+      user_id: tuple["user_id"],
+      category_id: tuple["category_id"] }
+  end
+
+  def edit_debt(title, amount, category, id)
+    sql = <<~SQL
+      UPDATE debt
+      SET name = $1,
+          amount = $2,
+          category_id = $3
+      WHERE id = $4
+    SQL
+    query(sql, title, amount, category, id)
+  end
+
+  def delete_debt(id)
+    query("DELETE FROM debt WHERE id = $1", id)
+  end
+  
   private
 
   def query(statement, *params)

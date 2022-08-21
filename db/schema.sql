@@ -82,3 +82,18 @@ INSERT INTO app_user (first_name, last_name, username, password, email)
 
 INSERT INTO income VALUES (DEFAULT, 'software engineer', 'full-time position', 5000, 12, 1);
 INSERT INTO income VALUES (DEFAULT, 'freelance developer', 'contract work. estimated yearly.', 2000, 12, 1);
+
+
+/* Data for development -- Debt and debt category */
+INSERT INTO debt_category (category_type)
+VALUES ('credit card'),
+       ('personal loan'),
+       ('student loan'),
+       ('mortage'),
+       ('auto loan'),
+       ('overdraft')
+       ('other');
+
+INSERT INTO debt (name, amount, user_id, category_id)
+VALUES ('discover card', 2500, 1, 1),
+       ('school loan', 10000, 1, 3);

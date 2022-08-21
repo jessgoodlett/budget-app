@@ -1,0 +1,38 @@
+<section class="page-title">
+  <h1>Debt Overview</h1>
+</section>
+
+<section class="total-income">
+  <div class="main-container">
+    <div></div>
+    <div class="stats">
+      <div class="income-display">
+        <h3>Total Debt</h3>
+        <span>$<%= @total_debt[:amount] %></span>
+      </div>
+    </div>
+
+    <div class="lists">
+      <div class="list-title">
+        <h2>List of Debt Accounts</h2>
+        <span><a href="/debt/new">ADD <i class="fa-solid fa-plus"></i></a></span>
+      </div>
+    <div class="list-container">
+        <% @debt.each do |i| %>
+          <div class="list-entry">
+            <div class="list-left">
+              <h3><%= i[:name] %></h3>
+              <p><%= i[:category] %></p>
+            </div>
+            <div class="list-right">
+              <p>-$<%= i[:amount] %> <span class="edit"><a href="/debt/<%= i[:debt_id] %>/edit">EDIT</a></span></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="side">
+      <div class="detail_overview"></div>
+    </div>
+  </div>
+</section>
