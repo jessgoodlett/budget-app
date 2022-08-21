@@ -1,15 +1,18 @@
-<section class="page-title">
+<section class="page-title edit-income">
   <h1>Edit Income</h1>
+  <form action="/income/<%= params[:id] %>/destroy" method="post">
+    <button class="delete-btn" type="submit">Delete<i class="fa-solid fa-trash"></i></input>
+  </form>
 </section>
 
 <section class="form-section">
   <form action="/income/<%= params[:id] %>" method="post">
     <input name="title" type="text" value="<%= @current_income[:title] %>" maxlength="100" required>
-    <input name="memo" type="text" value="<%= @current_income[:memo] %>">
+    <input name="memo" type="text" value="<%= @current_income[:memo] %>" placeholder="Add a short description">
     <input name="income" type="number" min="0" value="<%= @current_income[:monthly_income].to_i %>" required>
     <div class="range-container">
-      <p><span id="rangeValue">12</span><br>Source of income duration (months per year)</p>
-      <input  class="range" name="duration" type="range" value="12" min="1" max="12" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)">
+      <p><span id="rangeValue"><%= @current_income[:duration] %></span><br>Source of income duration (months per year)</p>
+      <input  class="range" name="duration" type="range" value="<%= @current_income[:duration] %>" min="1" max="12" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)">
     </div>
     <div class="form-btns">
       <a href="/income" class="cancel-btn">cancel</a>
