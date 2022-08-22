@@ -1,0 +1,44 @@
+<section class="page-title">
+  <h1>Savings Overview</h1>
+</section>
+
+<section class="total-income">
+  <div class="main-container">
+    <div class="stats">
+      <div class="income-display">
+        <h3>Monthly</h3>
+        <span>$<%= @total_saved[:amount] %></span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="income-display">
+      </div>
+    </div>
+    <div clas="stats">
+      <div class="income-display"></div>
+    </div>
+
+    <div class="lists">
+      <div class="list-title">
+        <h2>Savings Accounts</h2>
+        <span><a href="/savings/new">ADD <i class="fa-solid fa-plus"></i></a></span>
+      </div>
+      <div class="list-container">
+        <% @accounts.each do |i| %>
+          <div class="list-entry">
+            <div class="list-left">
+              <h3><%= i[:name] %></h3>
+              <p><%= i[:category_type] %></p>
+            </div>
+            <div class="list-right">
+              <p>$<%= i[:amount] %> <span class="edit"><a href="/savings/<%= i[:account_id] %>/edit">EDIT</a></span></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="side">
+      <div class="detail_overview"></div>
+    </div>
+  </div>
+</section>

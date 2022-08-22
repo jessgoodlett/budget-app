@@ -110,3 +110,43 @@ post "/debt/:id/destroy" do
   @storage.delete_debt(params[:id].to_i)
   redirect "/debt"
 end
+
+# savings pages
+get "/savings" do
+  @accounts = @storage.list_user_savings(@user)
+  @total_saved = @storage.calculate_savings(@user)
+  erb :savings
+end
+
+get "/savings/new" do
+  erb :new_savings
+end
+
+post "/savings" do
+  title = params[:title].strip
+  amount = params[:amount]
+  category = params[:category]
+
+  @storage.add_new_savings(title, amount, category, @user)
+  redirect "/savings"
+end
+
+get "/savings/:id/edit" do
+  @current_savings = @storage.find_savings(params[:id].to_i)
+  erb :edit_savings
+end
+
+post "/savings/:id" do
+  title = params[:title].strip
+  amount = params[:amount]
+  category = params[:category]
+  id = params[:id].to_i
+
+  @storage.edit_savings(title, amount, category, id)
+  redirect "/savings"
+end
+
+post "/savings/:id/destroy" do
+  @storage.delete_savings(params[:id].to_i)
+  redirect "/savings"
+end

@@ -1,0 +1,24 @@
+<section class="page-title">
+  <h1>Add Savings</h1>
+</section>
+
+<section class="form-section">
+  <form action="/savings" method="post">
+    <input name="title" type="text" placeholder="Savings account name" maxlength="100" required>
+    <input name="amount" type="number" min="0" required placeholder="How much do you have saved on the account?">
+    <div class="form-select">
+      <label for="category">Select the type of savings account:</label>
+      <select name="category" id="savings-category" required>
+        <option value="1">regular savings account</option>
+        <option value="2">high-yield savings account</option>
+        <option value="3">money market account</option>
+        <option value="4">certificate of deposit</option>
+        <option value="5">other</option>
+      </select>
+    </div>
+  <div class="form-btns">
+    <a href="/savings" class="cancel-btn">cancel</a>
+    <input type="submit" value="submit">
+  </div>
+  </form>
+</section>

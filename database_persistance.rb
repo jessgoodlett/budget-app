@@ -120,6 +120,61 @@ class DatabasePersistance
   def delete_debt(id)
     query("DELETE FROM debt WHERE id = $1", id)
   end
+
+  def list_user_savings(user_id)
+    sql = <<~SQL
+      SELECT name, amount_saved, category_type, saving_account.id AS account_id FROM saving_account 
+      INNER JOIN saving_category ON category_id = saving_category.id
+      WHERE user_id = $1
+    SQL
+    result = query(sql, user_id)
+
+    result.map do |tuple|
+      { name: tuple["name"],
+        amount: add_commas(tuple["amount_saved"]),
+        category: tuple["category_type"],
+        account_id: tuple["account_id"] }
+    end
+  end
+
+  def calculate_savings(user_id)
+    sql = <<~SQL
+      SELECT SUM(amount_saved) AS amount FROM saving_account 
+      WHERE user_id = $1
+      GROUP BY user_id
+    SQL
+    tuple = query(sql, user_id).first
+
+    { amount: add_commas(tuple["amount"])}
+  end
+
+  def add_new_savings(title, amount, category, id)
+    sql = "INSERT INTO saving_account (name, amount_saved, category_id, user_id) VALUES ($1, $2, $3, $4)"
+    query(sql, title, amount, category, id)
+  end
+
+  def find_savings(id)
+    tuple = query("SELECT * FROM saving_account WHERE id = $1", id).first
+    { title: tuple["name"],
+      amount: tuple["amount_saved"],
+      user_id: tuple["user_id"],
+      category_id: tuple["category_id"] }
+  end
+
+  def edit_savings(title, amount, category, id)
+    sql = <<~SQL
+      UPDATE saving_account
+      SET name = $1,
+          amount_saved = $2,
+          category_id = $3
+      WHERE id = $4
+    SQL
+    query(sql, title, amount, category, id)
+  end
+
+  def delete_savings(id)
+    query("DELETE FROM saving_account WHERE id = $1", id)
+  end
   
   private
 

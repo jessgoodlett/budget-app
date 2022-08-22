@@ -1,0 +1,27 @@
+<section class="page-title edit-income">
+  <h1>Edit Savings</h1>
+  <form action="/savings/<%= params[:id] %>/destroy" method="post">
+    <button class="delete-btn" type="submit">Delete<i class="fa-solid fa-trash"></i></input>
+  </form>
+</section>
+
+<section class="form-section">
+  <form action="/savings/<%= params[:id] %>" method="post">
+    <input name="title" type="text" value="<%= @current_savings[:title] %>" maxlength="100" required>
+    <input name="amount" type="number" min="0" required value="<%= @current_savings[:amount]%>">
+    <div class="form-select">
+      <label for="category">Select a savings category:</label>
+      <select name="category" id="savings-category" autofocus="<%= @current_savings[:category_id] %>" required>
+        <option value="1">regular savings account</option>
+        <option value="2">high-yield savings account</option>
+        <option value="3">money market account</option>
+        <option value="4">certificate of deposit</option>
+        <option value="5">other</option>
+      </select>
+    </div>
+  <div class="form-btns">
+    <a href="/savings" class="cancel-btn">cancel</a>
+    <input type="submit" value="save">
+  </div>
+  </form>
+</section>

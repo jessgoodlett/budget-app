@@ -91,9 +91,21 @@ VALUES ('credit card'),
        ('student loan'),
        ('mortage'),
        ('auto loan'),
-       ('overdraft')
+       ('overdraft'),
        ('other');
 
 INSERT INTO debt (name, amount, user_id, category_id)
 VALUES ('discover card', 2500, 1, 1),
        ('school loan', 10000, 1, 3);
+
+/* Data for development -- Saving and saving category */
+INSERT INTO saving_category (category_type)
+VALUES ('regular savings account'),
+       ('high-yield savings account'),
+       ('money market account'),
+       ('certificate of deposit'),
+       ('other');
+
+INSERT INTO saving_account (name, amount_saved, user_id, category_id)
+VALUES ('checkings', 2500, 1, 1),
+       ('emergency funds', 10000, 1, 2);
